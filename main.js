@@ -1,9 +1,13 @@
 var sq;
 var feed = [];
 var numFood = 10;
+var score = 0;
+
 
 function setup() {
     createCanvas(740, 480);
+    textSize(32);
+
     sq = new pup();
 
     for (var i = 0; i < numFood; i++) {
@@ -14,16 +18,36 @@ function setup() {
 function draw() {
     background(0, 255, 0);
     sq.display();
-
+    Score();
     for (var i = 0; i < feed.length; i++) {
         feed[i].display();
     }
 
-
+    text("Score: " + score, 470, 365);
 }
+
+
 
 function mousePressed() {
     sq.eat();
+}
+
+function Score() {
+fill('white');
+        rect(500,400,250,100);
+    fill('black');
+    
+    if(score === 100){
+        fill(225);
+        noStroke();
+        rect(0,0, width, height);
+        fill('blue');
+        textFont('Georgia');
+        textSize(90);
+        textAlign(Center);
+        text("Winner", width/2, height/2);
+        exit();
+    }
 }
 
 
@@ -58,6 +82,7 @@ function pup() {
             var r2 = diameter / 2;
             if (r1 + r2 > d) {
                 feed.splice(i, 1);
+                score += 10;
             }
         }
     };
@@ -121,6 +146,7 @@ function pup() {
         //tongue
         fill('#EE3E36');
         arc(x, y + 100, 90, 20, 0, 2, 2)
+
 
     };
 
