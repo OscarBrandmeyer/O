@@ -6,7 +6,7 @@ var score = 0;
 
 function setup() {
     createCanvas(740, 480);
-    textSize(32);
+    textSize(40);
 
     sq = new pup();
 
@@ -23,7 +23,17 @@ function draw() {
         feed[i].display();
     }
 
-    text("Score: " + score, 470, 365);
+    text("Score: " + score, 510, 425);
+    if(score === 100){
+        fill(250,0,0);
+        noStroke()
+        rect(0, 0, width, height);
+        fill(0);
+        textSize(90);
+        textAlign(CENTER);
+        text("Winner", width/2, height/2);
+        exit();
+    }
 }
 
 
@@ -34,20 +44,10 @@ function mousePressed() {
 
 function Score() {
 fill('white');
-        rect(500,400,250,100);
+        rect(470,365,250,100);
     fill('black');
     
-    if(score === 100){
-        fill(225);
-        noStroke();
-        rect(0,0, width, height);
-        fill('blue');
-        textFont('Georgia');
-        textSize(90);
-        textAlign(Center);
-        text("Winner", width/2, height/2);
-        exit();
-    }
+    
 }
 
 
